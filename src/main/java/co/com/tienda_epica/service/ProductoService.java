@@ -31,14 +31,80 @@ public class ProductoService {
         ProductoDao.crearProductoDB(registro);
     }
     public static void listarProductos(){
-
+        ProductoDao.listarProductosDB();
     }
 
     public static void modificarProducto(){
+        System.out.println("Indique para modificar 1. Nombre \n 2. Descripcióm \n 3.Precio \n 4. Costo \n 5. Cantiad");
+        int opc = sc.nextInt();
+        int id;
+        Producto update = new Producto();
+        switch (opc){
+            case 1:
+                System.out.println("Modificar nombre");
+                System.out.println("Ingrese el nuevo valor");
+                String nombre = sc.next();
+                System.out.println("Indique el id del producto a actualizar");
+                id = sc.nextInt();
+
+                update.setNombreProducto(nombre);
+                update.setIdProducto(id);
+                ProductoDao.modificarProductoDB(update);
+                break;
+            case 2:
+                System.out.println("Modificar descripción");
+                System.out.println("Ingrese el nuevo valor");
+                String descripcion = sc.next();
+                System.out.println("Indique el id del producto a actualizar");
+                id = sc.nextInt();
+
+                update.setDescripcionProducto(descripcion);
+                update.setIdProducto(id);
+                ProductoDao.modificarProductoDB(update);
+                break;
+            case 3:
+                System.out.println("Modificar Precio");
+                System.out.println("Ingrese el nuevo valor");
+                double precio = sc.nextDouble();
+                System.out.println("Indique el id del producto a actualizar");
+                id = sc.nextInt();
+
+                update.setPrecio(precio);
+                update.setIdProducto(id);
+                ProductoDao.modificarProductoDB(update);
+                break;
+            case 4:
+                System.out.println("Modificar Costo");
+                System.out.println("Ingrese el nuevo valor");
+                double costo = sc.nextDouble();
+                System.out.println("Indique el id del producto a actualizar");
+                id = sc.nextInt();
+
+                update.setCosto(costo);
+                update.setIdProducto(id);
+                ProductoDao.modificarProductoDB(update);
+                break;
+            case 5:
+                System.out.println("Modificar Cantidad");
+                System.out.println("Ingrese el nuevo valor");
+                double cantidad = sc.nextDouble();
+                System.out.println("Indique el id del producto a actualizar");
+                id = sc.nextInt();
+
+
+                update.setCantidad(cantidad);
+                update.setIdProducto(id);
+                ProductoDao.modificarProductoDB(update);
+                break;
+            default:
+                System.out.println("Opción no válida");
+        }
 
     }
 
     public static void eliminarProducto(){
-
+        System.out.println("Indique el id del producto a borrar");
+        int idProducto=sc.nextInt();
+        ProductoDao.eliminarProductoDB(idProducto);
     }
 }
