@@ -37,8 +37,10 @@ public class ProductoService {
     public static void modificarProducto(){
         System.out.println("Indique para modificar 1. Nombre \n 2. Descripcióm \n 3.Precio \n 4. Costo \n 5. Cantiad");
         int opc = sc.nextInt();
+        sc.skip("\n");
         int id;
-        Producto update = new Producto();
+        Producto update =new Producto();
+
         switch (opc){
             case 1:
                 System.out.println("Modificar nombre");
@@ -46,7 +48,9 @@ public class ProductoService {
                 String nombre = sc.next();
                 System.out.println("Indique el id del producto a actualizar");
                 id = sc.nextInt();
-
+                sc.skip("\n");
+                opc=1;
+                update.setOpc(opc);
                 update.setNombreProducto(nombre);
                 update.setIdProducto(id);
                 ProductoDao.modificarProductoDB(update);
@@ -54,10 +58,11 @@ public class ProductoService {
             case 2:
                 System.out.println("Modificar descripción");
                 System.out.println("Ingrese el nuevo valor");
-                String descripcion = sc.next();
+                String descripcion = sc.nextLine();
                 System.out.println("Indique el id del producto a actualizar");
                 id = sc.nextInt();
-
+                opc=2;
+                update.setOpc(opc);
                 update.setDescripcionProducto(descripcion);
                 update.setIdProducto(id);
                 ProductoDao.modificarProductoDB(update);
@@ -69,6 +74,8 @@ public class ProductoService {
                 System.out.println("Indique el id del producto a actualizar");
                 id = sc.nextInt();
 
+                opc=3;
+                update.setOpc(opc);
                 update.setPrecio(precio);
                 update.setIdProducto(id);
                 ProductoDao.modificarProductoDB(update);
@@ -80,6 +87,8 @@ public class ProductoService {
                 System.out.println("Indique el id del producto a actualizar");
                 id = sc.nextInt();
 
+                opc=4;
+                update.setOpc(opc);
                 update.setCosto(costo);
                 update.setIdProducto(id);
                 ProductoDao.modificarProductoDB(update);
@@ -91,7 +100,8 @@ public class ProductoService {
                 System.out.println("Indique el id del producto a actualizar");
                 id = sc.nextInt();
 
-
+                opc=5;
+                update.setOpc(opc);
                 update.setCantidad(cantidad);
                 update.setIdProducto(id);
                 ProductoDao.modificarProductoDB(update);
